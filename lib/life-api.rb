@@ -27,6 +27,8 @@ require "life-api/version"
 #
 module Life
   class API
+    attr_accessor :token, :sub_id
+
     class << self
       # Default logger for all Life::API instances
       #
@@ -45,9 +47,6 @@ module Life
       @msisdn   = params.delete(:msisdn)
       @password = params.delete(:password)
       @lang     = params.delete(:lang) || 'uk'
-
-      @token  = nil
-      @sub_id = nil
 
       @log = nil
 
