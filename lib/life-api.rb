@@ -81,38 +81,38 @@ module Life
         http.request(request)
       }
 
+      puts response.body
+
       return parse_xml(response.body)['response']
     end
 
     private
 
     def create_signed_url(method, params)
-      str = create_params(params)
-      str = method + str + '&signature='
+      query = create_param(params)
+      str = method + '?' + query + '&signature='
 
       digest = OpenSSL::Digest::Digest.new('sha1')
       hash = OpenSSL::HMAC.digest(digest, @application_key, str)
 
       hash = Base64.encode64(hash).chomp
 
-      str += encode_uri_component(hash)
+      str += urlencode(hash)
 
       return @api_url + str
     end
 
-    def create_params(params)
-      str = ''
-      params.each do |key, value|
-        str += !str.empty? ? '&' : '?'
-        str += encode_uri_component(key)
-        str += '='
-        str += encode_uri_component(value)
-      end
-
-      return str
+    # Returns a string representation of the receiver suitable for use as a URL query string
+    #
+    def create_param(params)
+      params.map do |key, value|
+        "#{urlencode(key)}=#{urlencode(value)}"
+      end.sort * '&'
     end
 
-    def encode_uri_component(str)
+    # URL-encode a string
+    #
+    def urlencode(str)
       return CGI.escape(str.to_s)
     end
 
