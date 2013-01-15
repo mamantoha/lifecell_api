@@ -96,8 +96,8 @@ module Life
       @log = logger
     end
 
-    def request(method, params)
-      params.merge!(accessKeyCode: @access_key_code)
+    def request(method, params = {})
+      params = { accessKeyCode: @access_key_code }.merge(params)
       url = create_signed_url(method, params)
 
       log.debug("[#{method}] url: #{url}") if log
@@ -111,6 +111,7 @@ module Life
       }
 
       xml =  parse_xml(response.body)['response']
+
 
       if xml['responseCode'] == '0'
         return xml

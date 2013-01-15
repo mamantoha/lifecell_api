@@ -5,12 +5,12 @@
 # [-] activateDeactivateService
 # [-] callMeBack
 # [-] changeLanguage
-# [-] changeSuperPassword
+# [+] changeSuperPassword
 # [-] changeTariff
 # [+] getAvailableTariffs
 # [+] getBalances
 # [-] getExpensesSummary
-# [-] getLanguages
+# [+] getLanguages
 # [-] getPaymentsHistory
 # [-] getSeparateBalances
 # [+] getServices
@@ -38,6 +38,10 @@ module Life
       request('signOut', { msisdn: @msisdn, subId: @sub_id })
     end
 
+    def change_super_password(old_password, new_password)
+      request('changeSuperPassword', base_api_parameters.merge({ oldPassword: old_password, newPassword: new_password }))
+    end
+
     def get_token
       request('getToken', { msisdn: @msisdn, subId: @sub_id })
     end
@@ -56,6 +60,10 @@ module Life
 
     def get_balances
       request('getBalances', base_api_parameters)
+    end
+
+    def get_languages
+      request('getLanguages', base_api_parameters)
     end
 
   end

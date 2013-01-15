@@ -2,7 +2,7 @@
 
 A Ruby interface to the life:) API. Use this gem at your own risk.
 
-[life:)]: http://life.com.ua — GSM operator in Ukraine.
+[life:)](http://life.com.ua) — GSM operator in Ukraine.
 
 ## Installation
 
