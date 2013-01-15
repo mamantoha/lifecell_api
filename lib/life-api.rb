@@ -19,13 +19,42 @@ require "life-api/version"
 #   require 'life-api'
 #   require 'logger'
 #
-#   life = Life::API.new(msisdn: msisdn, password: password)
+#   life = Life::API.new(msisdn: msisdn, password: password, lang: 'uk')
 #   life.log = Logger.new($stderr)
 #   life.sign_in
 #   life.get_summary_data
 #   life.sign_out
 #
 module Life
+
+  class MethodError < ArgumentError; end
+
+  RESPONSE_CODES = {
+    '0' => 'SUCCESSFULY_PERFORMED',
+    '-1' => 'METHOD_INVOCATION_TIMEOUT',
+    '-2' => 'INTERNAL_ERROR',
+    '-3' => 'INVALID_PARAMETERS_LIST',
+    '-4' => 'VENDOR_AUTHORIZATION_FAILED',
+    '-5' => 'VENDOR_ACCESS_KEY_EXPIRED',
+    '-6' => 'VENDOR_AUTHENTICATION_FAILED',
+    '-7' => 'SUPERPASS_CHECKING_FAILED',
+    '-8' => 'INCORRECT_SUBSCRIBER_ID',
+    '-9' => 'INCORRECT_SUBSRIBER_STATE',
+    '-10' => 'SUPERPASS_BLOCKED',
+    '-11' => 'SUBSCRIBER_ID_NOT_FOUND',
+    '-12' => 'TOKEN_EXPIRED',
+    '-13' => 'CHANGE_TARIFF_FAILED',
+    '-14' => 'SERVICE_ACTIVATION_FAILED',
+    '-15' => 'OFFER_ACTIVATION_FAILED',
+    '-16' => 'GET_TARIFFS_FAILED',
+    '-17' => 'GET_SERVICES_FAILED',
+    '-18' => 'REMOVE_SERVICE_FROM_PREPROCESSING_FAILED',
+    '-19' => 'LOGIC_IS_BLOCKING',
+    '-20' => 'TOO_MANY_REQUESTS',
+    '-40' => 'PAYMENTS_OR_EXPENSES_MISSED',
+    '-21474833648' => 'INTERNAL_APPLICATION_ERROR',
+  }
+
   class API
     attr_accessor :token, :sub_id
 
@@ -81,9 +110,13 @@ module Life
         http.request(request)
       }
 
-      puts response.body
+      xml =  parse_xml(response.body)['response']
 
-      return parse_xml(response.body)['response']
+      if xml['responseCode'] == '0'
+        return xml
+      else
+        raise MethodError, Life::RESPONSE_CODES[xml['responseCode']]
+      end
     end
 
     private

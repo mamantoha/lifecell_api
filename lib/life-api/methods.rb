@@ -1,5 +1,30 @@
 # encoding: utf-8
 
+# The list of available API method names:
+#
+# [-] activateDeactivateService
+# [-] callMeBack
+# [-] changeLanguage
+# [-] changeSuperPassword
+# [-] changeTariff
+# [+] getAvailableTariffs
+# [+] getBalances
+# [-] getExpensesSummary
+# [-] getLanguages
+# [-] getPaymentsHistory
+# [-] getSeparateBalances
+# [+] getServices
+# [+] getSummaryData
+# [+] getToken
+# [-] getUIProperties
+# [-] offerAction
+# [-] refillBalanceByScratchCard
+# [-] removeFromPreProcessing
+# [-] requestBalanceTransfer
+# [+] signIn
+# [+] signOut
+# [-] transferBalance
+
 module Life
   class API
     def sign_in
