@@ -6,7 +6,7 @@ require 'net/https'
 require 'openssl'
 require 'base64'
 
-require 'nori'
+require 'xmlsimple'
 
 require "life-api/methods"
 require "life-api/version"
@@ -110,8 +110,7 @@ module Life
         http.request(request)
       }
 
-      xml =  parse_xml(response.body)['response']
-
+      xml =  parse_xml(response.body)
 
       if xml['responseCode'] == '0'
         return xml
@@ -151,8 +150,7 @@ module Life
     end
 
     def parse_xml(str)
-      parser = Nori.new
-      return parser.parse(str)
+      return XmlSimple.xml_in(str, { 'ForceArray' => false })
     end
 
     def base_api_parameters
