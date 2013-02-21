@@ -1,17 +1,18 @@
 # encoding: utf-8
 
 # The list of available API method names:
+# (13/22)
 #
 # [-] activateDeactivateService
-# [-] callMeBack
+# [+] callMeBack
 # [-] changeLanguage
 # [+] changeSuperPassword
 # [-] changeTariff
 # [+] getAvailableTariffs
 # [+] getBalances
-# [-] getExpensesSummary
+# [+] getExpensesSummary
 # [+] getLanguages
-# [-] getPaymentsHistory
+# [+] getPaymentsHistory
 # [-] getSeparateBalances
 # [+] getServices
 # [+] getSummaryData
@@ -20,7 +21,7 @@
 # [-] offerAction
 # [-] refillBalanceByScratchCard
 # [-] removeFromPreProcessing
-# [-] requestBalanceTransfer
+# [+] requestBalanceTransfer
 # [+] signIn
 # [+] signOut
 # [-] transferBalance
@@ -64,6 +65,26 @@ module Life
 
     def get_languages
       request('getLanguages', base_api_parameters)
+    end
+
+    def call_me_back(msisdn_b)
+      request('callMeBack', base_api_parameters.merge({ msisdnB: msisdn_b }))
+    end
+
+    def request_balance_transfer(msisdn_b)
+      request('requestBalanceTransfer', base_api_parameters.merge({ msisdnB: msisdn_b }))
+    end
+
+    # @param [String] month_period in format 'yyyy-MM'
+    #
+    def get_payments_history(month_period)
+      request('getPaymentsHistory', base_api_parameters.merge({ monthPeriod: month_period }))
+    end
+
+    # @param [String] month_period in format 'yyyy-MM'
+    #
+    def get_expenses_summary(month_period)
+      request('getExpensesSummary', base_api_parameters.merge({ monthPeriod: month_period }))
     end
 
   end
