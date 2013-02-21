@@ -68,9 +68,11 @@ module Life
 
     # Create a new API object using the given parameters.
     #
-    # @param [String] msisdn
-    # @param [String] password
-    # @param [String] lang
+    # == Required parameters
+    #
+    # * +:msisdn+ - telephone number in format '38063*******'
+    # * +:password+ - life:) super password
+    # * +:lang+ - 'uk', 'ru' or 'en'
     #
     def initialize(params = {})
       @msisdn   = params.delete(:msisdn)

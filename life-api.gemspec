@@ -8,9 +8,9 @@ Gem::Specification.new do |gem|
   gem.version       = Life::API::VERSION
   gem.authors       = ["Anton Maminov"]
   gem.email         = ["anton.linux@gmail.com"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
-  gem.homepage      = ""
+  gem.description   = %q{A Ruby interface to the life:) API}
+  gem.summary       = %q{The Life::API library is used for interactions with a api.life.com.ua website}
+  gem.homepage      = "https://github.com/mamantoha/life-api"
 
   gem.files         = `git ls-files`.split($/)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }

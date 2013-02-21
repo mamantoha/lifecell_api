@@ -106,5 +106,9 @@ module Life
       request('getExpensesSummary', base_api_parameters.merge({ monthPeriod: month_period }))
     end
 
+    def refill_balance_by_scratch_card(secret_code)
+      request('refillBalanceByScratchCard', base_api_parameters.merge({ secretCode: secret_code}))
+    end
+
   end
 end
