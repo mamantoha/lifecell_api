@@ -1,11 +1,11 @@
 # encoding: utf-8
 
 # The list of available API method names:
-# (13/22)
+# (15/22)
 #
 # [-] activateDeactivateService
 # [+] callMeBack
-# [-] changeLanguage
+# [+] changeLanguage
 # [+] changeSuperPassword
 # [-] changeTariff
 # [+] getAvailableTariffs
@@ -17,7 +17,7 @@
 # [+] getServices
 # [+] getSummaryData
 # [+] getToken
-# [-] getUIProperties
+# [+] getUIProperties
 # [-] offerAction
 # [-] refillBalanceByScratchCard
 # [-] removeFromPreProcessing
@@ -47,6 +47,17 @@ module Life
       request('getToken', { msisdn: @msisdn, subId: @sub_id })
     end
 
+    # +last_date_update+ is DateTime object
+    #
+    def get_ui_properties(language_id, last_date_update)
+      request('getUIProperties', {
+        accessKeyCode:  @access_key_code,
+        languageId:     language_id,
+        osType:         @os_type,
+        lastDateUpdate: last_date_update,
+      })
+    end
+
     def get_summary_data
       request('getSummaryData', base_api_parameters)
     end
@@ -67,6 +78,10 @@ module Life
       request('getLanguages', base_api_parameters)
     end
 
+    def change_language(new_language_id)
+      request('changeLanguage', base_api_parameters.merge({ newLanguageId: new_language_id}))
+    end
+
     def call_me_back(msisdn_b)
       request('callMeBack', base_api_parameters.merge({ msisdnB: msisdn_b }))
     end
@@ -75,13 +90,17 @@ module Life
       request('requestBalanceTransfer', base_api_parameters.merge({ msisdnB: msisdn_b }))
     end
 
-    # @param [String] month_period in format 'yyyy-MM'
+    # Payments history for calendar month +month_period+
+    #
+    # +month_period+ - A string like 'yyyy-MM' that represent month of year
     #
     def get_payments_history(month_period)
       request('getPaymentsHistory', base_api_parameters.merge({ monthPeriod: month_period }))
     end
 
-    # @param [String] month_period in format 'yyyy-MM'
+    # Summary expenses report for calendar month +month_period+
+    #
+    # +month_period+ - A string like 'yyyy-MM' that represent month of year
     #
     def get_expenses_summary(month_period)
       request('getExpensesSummary', base_api_parameters.merge({ monthPeriod: month_period }))

@@ -79,6 +79,8 @@ module Life
 
       @log = nil
 
+      @os_type = 'ANDROID'
+
       @api_url         = 'https://api.life.com.ua/mobile/'
       @access_key_code = '7'
       @application_key = 'E6j_$4UnR_)0b'
@@ -154,7 +156,7 @@ module Life
     end
 
     def base_api_parameters
-      return { msisdn: @msisdn, languageId: @lang, osType: 'ANDROID', token: @token }
+      return { msisdn: @msisdn, languageId: @lang, osType: @os_type, token: @token }
     end
 
   end
