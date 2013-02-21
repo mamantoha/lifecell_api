@@ -1,7 +1,7 @@
 # encoding: utf-8
 
 # The list of available API method names:
-# (15/22)
+# (16/22)
 #
 # [-] activateDeactivateService
 # [+] callMeBack
@@ -19,7 +19,7 @@
 # [+] getToken
 # [+] getUIProperties
 # [-] offerAction
-# [-] refillBalanceByScratchCard
+# [+] refillBalanceByScratchCard
 # [-] removeFromPreProcessing
 # [+] requestBalanceTransfer
 # [+] signIn

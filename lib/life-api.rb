@@ -116,11 +116,18 @@ module Life
 
       xml =  parse_xml(response.body)
 
-      if xml['responseCode'] == '0'
-        return xml
+      if xml['responseCode']
+        if xml['responseCode'] == '0'
+          return xml
+        else
+          error_message = Life::RESPONSE_CODES[xml['responseCode']]
+          error_message ||= "Unknown error code #{xml['responseCode']}"
+          raise MethodError, error_message
+        end
       else
-        raise MethodError, Life::RESPONSE_CODES[xml['responseCode']]
+        raise MethodError, "Unknown error: #{xml}"
       end
+
     end
 
     private
