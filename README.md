@@ -62,6 +62,7 @@ Now you can make requests to the API.
 Tested with the following Ruby versions:
 
 * MRI 1.9.3
+* MRI 2.0.0
 
 ## Contributing
 
