@@ -1,6 +1,6 @@
 # Life::API
 
-A Ruby interface to the life:) API. Use this gem at your own risk.
+A Ruby library for interfacing with life:)'s undocumented/unannounced API.
 
 [life:)](http://life.com.ua) — GSM operator in Ukraine.
 
@@ -56,6 +56,134 @@ life.sub_id = sub_id
 ```
 
 Now you can make requests to the API.
+
+### API Examples
+
+Below you can see some the methods for working with life:) data.
+
+#### Returns advanced information on the current subscriber
+```
+life.get_summary_data
+```
+
+Sample response
+
+```
+{"method"=>"getSummaryData",
+ "responseCode"=>"0",
+ "subscriber"=>
+  {"attribute"=>
+    [{"name"=>"ICCID", "content"=>"89380062300016907xxx"},
+     {"name"=>"PUK", "content"=>"25159xxx"},
+     {"name"=>"PUK2", "content"=>"00036xxx"},
+     {"name"=>"PIN2", "content"=>"55xx"},
+     {"name"=>"IMSI", "content"=>"25506109310xxxx"},
+     {"name"=>"PIN", "content"=>"70xx"},
+     {"name"=>"LINE_STATE", "content"=>"ACT/STD"},
+     {"name"=>"USE_COMMON_MAIN", "content"=>"false"},
+     {"name"=>"LINE_ACTIVATION_DATE",
+      "content"=>"2010-03-02T11:28:07.392+02:00"},
+     {"name"=>"LANGUAGE_ID", "content"=>"uk_tr"},
+     {"name"=>"DEVICE_NAME", "content"=>"HTC Sensation (PG58130)"},
+     {"name"=>"LINE_SUSPEND_DATE", "content"=>"2014-03-21T00:00:00+02:00"}],
+   "balance"=>
+    [{"code"=>"Line_Main", "amount"=>"12.83"},
+     {"code"=>"Line_Bonus", "amount"=>"0.00"},
+     {"code"=>"Line_Debt", "amount"=>"0.00"}],
+   "bundleFreeMigration"=>{"amount"=>"0"},
+   "tariff"=>{"code"=>"IND_PRE_YOUTH", "name"=>"Crazy day"}}}
+```
+
+#### Returns the balance of the current subscriber
+
+```
+life.get_balances
+```
+
+Sample response
+
+```
+{"method"=>"getBalances",
+ "responseCode"=>"0",
+ "balance"=>
+  [{"code"=>"Bundle_Gprs_Internet",
+    "amount"=>"0.00",
+    "measure"=>"Bytes",
+    "name"=>"Free Internet"},
+   {"code"=>"Bundle_Gprs_Wap",
+    "amount"=>"0.00",
+    "measure"=>"Bytes",
+    "name"=>"Free Internet [WAP]"},
+   {"code"=>"Bundle_Gprs_Internet_Youth",
+    "amount"=>"32624640.00",
+    "measure"=>"Bytes",
+    "name"=>"Internet [Crazy Day]"},
+   {"code"=>"Bundle_Usage_Internet_Weekly",
+    "amount"=>"0.00",
+    "measure"=>"Bytes",
+    "name"=>"Used Internet [Week]"},
+   {"code"=>"Bundle_Mms_Ukraine",
+    "amount"=>"0.00",
+    "measure"=>"MMS",
+    "name"=>"Free MMS [in Ukraine]"},
+   {"code"=>"Bundle_Sms_Ukraine",
+    "amount"=>"40.00",
+    "measure"=>"SMS",
+    "name"=>"Free SMS [in Ukraine]"},
+   {"code"=>"Bundle_Youth_Voice_Omo_Pstn",
+    "amount"=>"2160.00",
+    "measure"=>"Seconds",
+    "name"=>"100 min «life:) Сrazy day maximum» [other mob operators]"},
+   {"code"=>"Bundle_UsageN_FF_FREE",
+    "amount"=>"0.00",
+    "measure"=>"Seconds",
+    "name"=>"Free minutes [Family Numbers]"},
+   {"code"=>"Bundle_UsageN_Onnet_Region",
+    "amount"=>"0.00",
+    "measure"=>"Seconds",
+    "name"=>"Free minutes [Free life:) Donbas]"},
+   {"code"=>"Bundle_Voice_Onnet",
+    "amount"=>"24000.00",
+    "measure"=>"Seconds",
+    "name"=>"Free minutes [life:) network]"},
+   {"code"=>"Bundle_Voice_Offnet",
+    "amount"=>"0.00",
+    "measure"=>"Seconds",
+    "name"=>
+     "Free minutes [other mobile operators and fixed numbers of Ukraine]"},
+{"code"=>"Line_Bonus",
+    "amount"=>"0.00",
+    "measure"=>"UAH",
+    "name"=>"Line Bonus"},
+   {"code"=>"Line_Main",
+    "amount"=>"12.83",
+    "measure"=>"UAH",
+    "name"=>"Line Main"}]}
+```
+
+#### Returns payments history for calendar month in format 'YYYY-mm'
+
+```
+life.get_payments_history('2013-03')
+```
+
+Sample response
+
+```
+{"method"=>"getPaymentsHistory",
+ "responseCode"=>"0",
+ "payments"=>
+  {"sum"=>"50.00",
+   "payment"=>
+    [{"date"=>"2013-03-21",
+      "time"=>"10:40:12",
+      "type"=>"Payment via WEB",
+      "sum"=>"10.00"},
+     {"date"=>"2013-03-21",
+      "time"=>"13:25:28",
+      "type"=>"Payment via WEB",
+      "sum"=>"40.00"}]}}
+```
 
 ## Supported Rubies
 
