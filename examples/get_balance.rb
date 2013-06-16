@@ -8,7 +8,7 @@ require 'life-api'
 
 puts Life::API::VERSION
 
-msisdn = '38xxxxxxxxx'
+msisdn = '+38xxxxxxxxx'
 password = ''
 
 life = Life::API.new(msisdn: msisdn, password: password, lang: 'en')

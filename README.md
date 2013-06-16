@@ -36,7 +36,7 @@ require 'life-api'
 
 You can authenticate with life:) in two ways: with password or with token.
 
-Authentication with password to the life:) API is accomplished using an Phone number(`msisdn`) and SuperPassword(`password`).
+Authentication with password to the life:) API is accomplished using a phone number(`msisdn`) starting with a plus sign ("+") and the country code("380"), and SuperPassword(`password`).
 
 ```ruby
 life = Life::API.new(msisdn: msisdn, password: password)
