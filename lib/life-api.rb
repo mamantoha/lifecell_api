@@ -135,7 +135,7 @@ module Life
       query = create_param(params)
       str = method + '?' + query + '&signature='
 
-      digest = OpenSSL::Digest::Digest.new('sha1')
+      digest = OpenSSL::Digest.new('sha1')
       hash = OpenSSL::HMAC.digest(digest, @application_key, str)
 
       hash = Base64.encode64(hash).chomp
