@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 require 'bundler'
 Bundler.setup :default
 
@@ -8,8 +6,8 @@ require 'life-api'
 
 puts Life::API::VERSION
 
-msisdn = '+38xxxxxxxxx'
-password = ''
+msisdn = '38xxxxxxxxx'
+password = 'xxxxxx'
 
 life = Life::API.new(msisdn: msisdn, password: password, lang: 'en')
 life.log = Logger.new($stderr)
