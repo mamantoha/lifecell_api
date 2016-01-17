@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 # The list of available API method names:
 # (16/22)
 #

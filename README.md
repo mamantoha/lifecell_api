@@ -1,8 +1,8 @@
 # Life::API
 
-A Ruby library for interfacing with life:)'s undocumented/unannounced API.
+A Ruby library for interfacing with lifecell's undocumented/unannounced API.
 
-[life:)](http://life.com.ua) — GSM operator in Ukraine.
+[lifecell](http://lifecell.com.ua) — GSM operator in Ukraine.
 
 ## Installation
 
@@ -192,8 +192,7 @@ Sample response
 
 Tested with the following Ruby versions:
 
-* MRI 1.9.3
-* MRI 2.0.0
+* MRI 2.3.0
 
 ## Contributing
 
@@ -205,6 +204,6 @@ Tested with the following Ruby versions:
 
 ## License and Author
 
-Copyright (c) 2013-2015 by Anton Maminov
+Copyright (c) 2013-2016 by Anton Maminov
 
 This library is distributed under the MIT license. Please see the LICENSE file.

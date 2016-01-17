@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 require 'uri'
 require 'cgi'
 require 'net/https'
@@ -11,8 +9,8 @@ require 'xmlsimple'
 require "life-api/methods"
 require "life-api/version"
 
-# The Life::API library is used for interactions with a api.life.com.ua website.
-# life:) — GSM operator in Ukraine
+# The Life::API library is used for interactions with a https://api.life.com.ua website.
+# lifecell — GSM operator in Ukraine
 #
 # == Example
 #
@@ -71,7 +69,7 @@ module Life
     # == Required parameters
     #
     # * +:msisdn+ - telephone number in format '38063*******'
-    # * +:password+ - life:) super password
+    # * +:password+ - super password
     # * +:lang+ - 'uk', 'ru' or 'en'
     #
     def initialize(params = {})
