@@ -40,7 +40,7 @@ Authentication with password to the life:) API is accomplished using a phone num
 
 ```ruby
 msisdn = '38063xxxxxxx'
-pasword = 'xxxxxx'
+password = 'xxxxxx'
 
 life = Life::API.new(msisdn: msisdn, password: password)
 life.sign_in
@@ -48,7 +48,7 @@ token = life.token
 sub_id = life.sub_id
 ```
 
-> To obtain the SuperPassword send an SMS with key word PASSWORD to number 125, or enter life:) menu by dialing `*125#`, choose Manage account and then SuperPassword service or call `*125*779#`.
+> To obtain the SuperPassword send an SMS with key word PAROL to number 123.
 
 or
 
