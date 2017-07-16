@@ -6,8 +6,8 @@ require 'base64'
 
 require 'xmlsimple'
 
-require "life-api/methods"
-require "life-api/version"
+require 'life-api/methods'
+require 'life-api/version'
 
 # The Life::API library is used for interactions with a https://api.life.com.ua website.
 # lifecell — GSM operator in Ukraine
@@ -24,7 +24,6 @@ require "life-api/version"
 #   life.sign_out
 #
 module Life
-
   class MethodError < ArgumentError; end
 
   RESPONSE_CODES = {
@@ -50,8 +49,8 @@ module Life
     '-19' => 'LOGIC_IS_BLOCKING',
     '-20' => 'TOO_MANY_REQUESTS',
     '-40' => 'PAYMENTS_OR_EXPENSES_MISSED',
-    '-21474833648' => 'INTERNAL_APPLICATION_ERROR',
-  }
+    '-21474833648' => 'INTERNAL_APPLICATION_ERROR'
+  }.freeze
 
   class API
     attr_accessor :token, :sub_id
@@ -94,9 +93,7 @@ module Life
 
     # Sets the +logger+ used by this instance of Life::API
     #
-    def log= logger
-      @log = logger
-    end
+    attr_writer :log
 
     def request(method, params = {})
       params = { accessKeyCode: @access_key_code }.merge(params)
@@ -111,7 +108,7 @@ module Life
 
       log.debug("[#{method}] response: #{response.body}") if log
 
-      xml =  parse_xml(response.body)
+      xml = parse_xml(response.body)
 
       if xml['responseCode']
         if xml['responseCode'] == '0'
@@ -124,7 +121,6 @@ module Life
       else
         raise MethodError, "Unknown error: #{xml}"
       end
-
     end
 
     private
@@ -140,7 +136,7 @@ module Life
 
       str += urlencode(hash)
 
-      return @api_url + str
+      @api_url + str
     end
 
     # Returns a string representation of the receiver suitable for use as a URL query string
@@ -154,16 +150,15 @@ module Life
     # URL-encode a string
     #
     def urlencode(str)
-      return CGI.escape(str.to_s)
+      CGI.escape(str.to_s)
     end
 
     def parse_xml(str)
-      return XmlSimple.xml_in(str, { 'ForceArray' => false })
+      XmlSimple.xml_in(str, 'ForceArray' => false)
     end
 
     def base_api_parameters
-      return { msisdn: @msisdn, languageId: @lang, osType: @os_type, token: @token }
+      { msisdn: @msisdn, languageId: @lang, osType: @os_type, token: @token }
     end
-
   end
 end

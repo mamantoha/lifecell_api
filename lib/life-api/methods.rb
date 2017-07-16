@@ -27,33 +27,31 @@
 module Life
   class API
     def sign_in
-      xml = request('signIn', { msisdn: @msisdn, superPassword: @password })
+      xml = request('signIn', msisdn: @msisdn, superPassword: @password)
       @token  = xml['token']
       @sub_id = xml['subId']
-      return xml
+      xml
     end
 
     def sign_out
-      request('signOut', { msisdn: @msisdn, subId: @sub_id })
+      request('signOut', msisdn: @msisdn, subId: @sub_id)
     end
 
     def change_super_password(old_password, new_password)
-      request('changeSuperPassword', base_api_parameters.merge({ oldPassword: old_password, newPassword: new_password }))
+      request('changeSuperPassword', base_api_parameters.merge(oldPassword: old_password, newPassword: new_password))
     end
 
     def get_token
-      request('getToken', { msisdn: @msisdn, subId: @sub_id })
+      request('getToken', msisdn: @msisdn, subId: @sub_id)
     end
 
     # +last_date_update+ is DateTime object
     #
     def get_ui_properties(language_id, last_date_update)
-      request('getUIProperties', {
-        accessKeyCode:  @access_key_code,
-        languageId:     language_id,
-        osType:         @os_type,
-        lastDateUpdate: last_date_update,
-      })
+      request('getUIProperties', accessKeyCode:  @access_key_code,
+                                 languageId:     language_id,
+                                 osType:         @os_type,
+                                 lastDateUpdate: last_date_update)
     end
 
     def get_summary_data
@@ -77,15 +75,15 @@ module Life
     end
 
     def change_language(new_language_id)
-      request('changeLanguage', base_api_parameters.merge({ newLanguageId: new_language_id}))
+      request('changeLanguage', base_api_parameters.merge(newLanguageId: new_language_id))
     end
 
     def call_me_back(msisdn_b)
-      request('callMeBack', base_api_parameters.merge({ msisdnB: msisdn_b }))
+      request('callMeBack', base_api_parameters.merge(msisdnB: msisdn_b))
     end
 
     def request_balance_transfer(msisdn_b)
-      request('requestBalanceTransfer', base_api_parameters.merge({ msisdnB: msisdn_b }))
+      request('requestBalanceTransfer', base_api_parameters.merge(msisdnB: msisdn_b))
     end
 
     # Payments history for calendar month +month_period+
@@ -93,7 +91,7 @@ module Life
     # +month_period+ - A string like 'yyyy-MM' that represent month of year
     #
     def get_payments_history(month_period)
-      request('getPaymentsHistory', base_api_parameters.merge({ monthPeriod: month_period }))
+      request('getPaymentsHistory', base_api_parameters.merge(monthPeriod: month_period))
     end
 
     # Summary expenses report for calendar month +month_period+
@@ -101,12 +99,11 @@ module Life
     # +month_period+ - A string like 'yyyy-MM' that represent month of year
     #
     def get_expenses_summary(month_period)
-      request('getExpensesSummary', base_api_parameters.merge({ monthPeriod: month_period }))
+      request('getExpensesSummary', base_api_parameters.merge(monthPeriod: month_period))
     end
 
     def refill_balance_by_scratch_card(secret_code)
-      request('refillBalanceByScratchCard', base_api_parameters.merge({ secretCode: secret_code}))
+      request('refillBalanceByScratchCard', base_api_parameters.merge(secretCode: secret_code))
     end
-
   end
 end
