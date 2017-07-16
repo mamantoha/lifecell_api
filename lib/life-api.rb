@@ -10,7 +10,7 @@ require 'life-api/methods'
 require 'life-api/version'
 
 # The Life::API library is used for interactions with a https://api.life.com.ua website.
-# lifecell — GSM operator in Ukraine
+# lifecell - GSM operator in Ukraine
 #
 # == Example
 #
