@@ -2,6 +2,8 @@
 
 A Ruby library for interfacing with lifecell's undocumented/unannounced API.
 
+Formerly known as `life-api`.
+
 [lifecell](http://lifecell.com.ua) — GSM operator in Ukraine.
 
 ## Installation
