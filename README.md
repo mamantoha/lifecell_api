@@ -204,6 +204,6 @@ Tested with the following Ruby versions:
 
 ## License and Author
 
-Copyright (c) 2013-2017 by Anton Maminov
+Copyright (c) 2013-2018 by Anton Maminov
 
 This library is distributed under the MIT license. Please see the LICENSE file.

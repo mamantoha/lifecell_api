@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # The list of available API method names:
 # (16/22)
 #

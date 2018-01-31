@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'uri'
 require 'cgi'
 require 'net/https'
@@ -99,14 +101,14 @@ module Life
       params = { accessKeyCode: @access_key_code }.merge(params)
       url = create_signed_url(method, params)
 
-      log.debug("[#{method}] request: #{url}") if log
+      log&.debug("[#{method}] request: #{url}")
 
       uri = URI(url)
       request = Net::HTTP::Get.new(uri.request_uri)
 
       response = Net::HTTP.start(uri.host, uri.port, use_ssl: true) { |http| http.request(request) }
 
-      log.debug("[#{method}] response: #{response.body}") if log
+      log&.debug("[#{method}] response: #{response.body}")
 
       xml = parse_xml(response.body)
 
