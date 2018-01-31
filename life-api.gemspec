@@ -22,4 +22,10 @@ Gem::Specification.new do |gem|
   gem.add_runtime_dependency('xml-simple', '~> 1.1.2')
   gem.add_development_dependency('pry')
   gem.add_development_dependency('rubocop')
+
+  gem.post_install_message = <<-MESSAGE
+  !    The 'life-api' gem has been deprecated and has been replaced by 'lifecell_api'.
+  !    See: https://rubygems.org/gems/lifecell_api
+  !    And: https://github.com/mamantoha/lifecell_api
+  MESSAGE
 end
