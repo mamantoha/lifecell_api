@@ -9,7 +9,7 @@ A Ruby library for interfacing with lifecell's undocumented/unannounced API.
 Add this line to your application's Gemfile:
 
 ```
-gem 'life-api'
+gem 'lifecell_api'
 ```
 
 And then execute:
@@ -21,15 +21,15 @@ $ bundle
 Or install it yourself as:
 
 ```
-$ gem install life-api
+$ gem install lifecell_api
 ```
 
 ## Usage
 
-First of all require the `life-api` library.
+First of all require the `lifecell_api` library.
 
 ```ruby
-require 'life-api'
+require 'lifecell_api'
 ```
 
 ### Authentication
@@ -192,7 +192,7 @@ Sample response
 
 Tested with the following Ruby versions:
 
-* MRI 2.3.0
+* MRI 2.5.0
 
 ## Contributing
 
