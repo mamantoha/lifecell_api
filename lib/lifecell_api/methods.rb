@@ -27,7 +27,7 @@
 # [-] transferBalance
 
 # :nodoc:
-module Life
+module Lifecell
   # :nodoc:
   class API
     def sign_in

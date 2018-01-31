@@ -8,24 +8,24 @@ require 'base64'
 
 require 'xmlsimple'
 
-require 'life-api/methods'
-require 'life-api/version'
+require 'lifecell_api/methods'
+require 'lifecell_api/version'
 
-# The Life::API library is used for interactions with a https://api.life.com.ua.
+# The Lifecell::API library is used for interactions with a https://api.life.com.ua.
 # lifecell - GSM operator in Ukraine
 #
 # == Example
 #
-#   require 'life-api'
+#   require 'lifecell_api'
 #   require 'logger'
 #
-#   life = Life::API.new(msisdn: msisdn, password: password, lang: 'uk')
+#   life = Lifecell::API.new(msisdn: msisdn, password: password, lang: 'uk')
 #   life.log = Logger.new($stderr)
 #   life.sign_in
 #   life.get_summary_data
 #   life.sign_out
 #
-module Life
+module Lifecell
   class MethodError < ArgumentError; end
 
   RESPONSE_CODES = {
@@ -59,9 +59,9 @@ module Life
     attr_accessor :token, :sub_id
 
     class << self
-      # Default logger for all Life::API instances
+      # Default logger for all Lifecell::API instances
       #
-      #   Life::API.log = Logger.new($stderr)
+      #   Lifecell::API.log = Logger.new($stderr)
       #
       attr_accessor :log
     end
@@ -88,13 +88,13 @@ module Life
       @application_key = 'E6j_$4UnR_)0b'
     end
 
-    # The current logger. If no logger has been set Life::API.log is used.
+    # The current logger. If no logger has been set Lifecell::API.log is used.
     #
     def log
-      @log || Life::API.log
+      @log || Lifecell::API.log
     end
 
-    # Sets the +logger+ used by this instance of Life::API
+    # Sets the +logger+ used by this instance of Lifecell::API
     #
     attr_writer :log
 
@@ -118,7 +118,7 @@ module Life
     def raise_error!(xml)
       raise MethodError, "Unknown error: #{xml}" unless xml['responseCode']
 
-      error_message = Life::RESPONSE_CODES[xml['responseCode']]
+      error_message = Lifecell::RESPONSE_CODES[xml['responseCode']]
       error_message ||= "Unknown error code #{xml['responseCode']}"
       raise MethodError, error_message
     end

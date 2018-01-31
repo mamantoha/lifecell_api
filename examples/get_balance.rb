@@ -4,14 +4,14 @@ require 'bundler'
 Bundler.setup :default
 
 require 'logger'
-require 'life-api'
+require 'lifecell_api'
 
-puts Life::API::VERSION
+puts Lifecell::API::VERSION
 
 msisdn = '38xxxxxxxxx'
 password = 'xxxxxx'
 
-life = Life::API.new(msisdn: msisdn, password: password, lang: 'en')
+life = Lifecell::API.new(msisdn: msisdn, password: password, lang: 'en')
 life.log = Logger.new($stderr)
 life.sign_in
 
@@ -20,7 +20,9 @@ summary_data = life.summary_data
 tariff = summary_data['subscriber']['tariff']['name']
 puts "Tariff: #{tariff}"
 
-line_suspend_date = summary_data['subscriber']['attribute'].select { |f| f['name'] == 'LINE_SUSPEND_DATE' }.first['content']
+line_suspend_date = summary_data['subscriber']['attribute']
+                    .select { |f| f['name'] == 'LINE_SUSPEND_DATE' }
+                    .first['content']
 line_suspend_date = Time.mktime(line_suspend_date).strftime('%d.%m.%Y')
 puts "Suspend date: #{line_suspend_date}"
 

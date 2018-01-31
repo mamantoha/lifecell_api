@@ -1,4 +1,4 @@
-# Life::API
+# lifecell::API
 
 A Ruby library for interfacing with lifecell's undocumented/unannounced API.
 
@@ -42,7 +42,7 @@ Authentication with password to the life:) API is accomplished using a phone num
 msisdn = '38063xxxxxxx'
 password = 'xxxxxx'
 
-life = Life::API.new(msisdn: msisdn, password: password)
+life = Lifecell::API.new(msisdn: msisdn, password: password)
 life.sign_in
 token = life.token
 sub_id = life.sub_id
@@ -53,7 +53,7 @@ sub_id = life.sub_id
 or
 
 ```ruby
-life = Life::API.new
+life = Lifecell::API.new
 life.token = token
 life.sub_id = sub_id
 ```
