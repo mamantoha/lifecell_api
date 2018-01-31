@@ -15,7 +15,7 @@ life = Life::API.new(msisdn: msisdn, password: password, lang: 'en')
 life.log = Logger.new($stderr)
 life.sign_in
 
-summary_data = life.get_summary_data
+summary_data = life.summary_data
 
 tariff = summary_data['subscriber']['tariff']['name']
 puts "Tariff: #{tariff}"
@@ -35,7 +35,7 @@ puts "Bonus: #{bonus} ₴"
 puts "Dept: #{debt} ₴"
 
 puts "\nBalances:"
-balances =  life.get_balances
+balances =  life.balances
 balances['balance'].keep_if { |i| i['amount'].to_i != 0 }.each do |i|
   puts " * #{i['name']}: #{i['amount']} #{i['measure']}"
 end

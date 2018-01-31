@@ -11,7 +11,7 @@ require 'xmlsimple'
 require 'life-api/methods'
 require 'life-api/version'
 
-# The Life::API library is used for interactions with a https://api.life.com.ua website.
+# The Life::API library is used for interactions with a https://api.life.com.ua.
 # lifecell - GSM operator in Ukraine
 #
 # == Example
@@ -54,6 +54,7 @@ module Life
     '-21474833648' => 'INTERNAL_APPLICATION_ERROR'
   }.freeze
 
+  # :nodoc:
   class API
     attr_accessor :token, :sub_id
 
@@ -103,29 +104,33 @@ module Life
 
       log&.debug("[#{method}] request: #{url}")
 
-      uri = URI(url)
-      request = Net::HTTP::Get.new(uri.request_uri)
-
-      response = Net::HTTP.start(uri.host, uri.port, use_ssl: true) { |http| http.request(request) }
+      response = response(url)
 
       log&.debug("[#{method}] response: #{response.body}")
 
       xml = parse_xml(response.body)
-
-      if xml['responseCode']
-        if xml['responseCode'] == '0'
-          return xml
-        else
-          error_message = Life::RESPONSE_CODES[xml['responseCode']]
-          error_message ||= "Unknown error code #{xml['responseCode']}"
-          raise MethodError, error_message
-        end
-      else
-        raise MethodError, "Unknown error: #{xml}"
-      end
+      return xml if xml['responseCode'] == '0'
+      raise_error!(xml)
     end
 
     private
+
+    def raise_error!(xml)
+      raise MethodError, "Unknown error: #{xml}" unless xml['responseCode']
+
+      error_message = Life::RESPONSE_CODES[xml['responseCode']]
+      error_message ||= "Unknown error code #{xml['responseCode']}"
+      raise MethodError, error_message
+    end
+
+    def response(url)
+      uri = URI(url)
+      request = Net::HTTP::Get.new(uri.request_uri)
+
+      Net::HTTP.start(uri.host, uri.port, use_ssl: true) do |http|
+        http.request(request)
+      end
+    end
 
     def create_signed_url(method, params)
       query = create_param(params)
@@ -141,8 +146,8 @@ module Life
       @api_url + str
     end
 
-    # Returns a string representation of the receiver suitable for use as a URL query string
-    #
+    # Returns a string representation of the receiver suitable for use
+    # as a URL query string
     def create_param(params)
       params.map do |key, value|
         "#{urlencode(key)}=#{urlencode(value)}"
@@ -150,7 +155,6 @@ module Life
     end
 
     # URL-encode a string
-    #
     def urlencode(str)
       CGI.escape(str.to_s)
     end

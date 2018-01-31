@@ -66,7 +66,7 @@ Below you can see some the methods for working with life:) data.
 
 #### Returns advanced information on the current subscriber
 ```
-life.get_summary_data
+life.summary_data
 ```
 
 Sample response
@@ -100,7 +100,7 @@ Sample response
 #### Returns the balance of the current subscriber
 
 ```
-life.get_balances
+life.balances
 ```
 
 Sample response
@@ -167,7 +167,7 @@ Sample response
 #### Returns payments history for calendar month in format 'YYYY-mm'
 
 ```
-life.get_payments_history('2013-03')
+life.payments_history('2013-03')
 ```
 
 Sample response
