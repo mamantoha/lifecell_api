@@ -11,7 +11,7 @@ Gem::Specification.new do |gem|
   gem.email = ['anton.maminov@gmail.com']
   gem.description = 'A Ruby interface to the lifecell API'
   gem.summary = <<-SUMMARY
-    The Life::API library is used for interactions
+    The Lifecell::API library is used for interactions
     with api.life.com.ua
   SUMMARY
   gem.homepage = 'https://github.com/mamantoha/lifecell_api'

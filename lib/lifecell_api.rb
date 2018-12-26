@@ -27,6 +27,7 @@ require 'lifecell_api/version'
 #
 module Lifecell
   class MethodError < ArgumentError; end
+  class StatusError < ArgumentError; end
 
   RESPONSE_CODES = {
     '0' => 'SUCCESSFULY_PERFORMED',
@@ -106,10 +107,15 @@ module Lifecell
 
       response = response(url)
 
+      unless response.code == "200"
+        raise StatusError, "Received status code #{response.code} from server"
+      end
+
       log&.debug("[#{method}] response: #{response.body}")
 
       xml = parse_xml(response.body)
       return xml if xml['responseCode'] == '0'
+
       raise_error!(xml)
     end
 
