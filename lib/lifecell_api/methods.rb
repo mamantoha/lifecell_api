@@ -32,7 +32,7 @@ module Lifecell
   class API
     def sign_in
       xml = request('signIn', msisdn: @msisdn, superPassword: @password)
-      @token  = xml['token']
+      @token = xml['token']
       @sub_id = xml['subId']
       xml
     end
