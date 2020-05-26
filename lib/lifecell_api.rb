@@ -107,9 +107,7 @@ module Lifecell
 
       response = response(url)
 
-      unless response.code == '200'
-        raise StatusError, "Received status code #{response.code} from server"
-      end
+      raise StatusError, "Received status code #{response.code} from server" unless response.code == '200'
 
       log&.debug("[#{method}] response: #{response.body}")
 
