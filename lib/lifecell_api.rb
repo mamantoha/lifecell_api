@@ -92,7 +92,7 @@ module Lifecell
     # The current logger. If no logger has been set Lifecell::API.log is used.
     #
     def log
-      @log || Lifecell::API.log
+      @log ||= Lifecell::API.log
     end
 
     # Sets the +logger+ used by this instance of Lifecell::API
