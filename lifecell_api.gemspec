@@ -22,6 +22,7 @@ Gem::Specification.new do |gem|
   gem.test_files = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ['lib']
 
+  gem.required_ruby_version = '>= 2.6.0'
   gem.add_runtime_dependency('xml-simple', '~> 1.1.2')
   gem.add_development_dependency('pry')
   gem.add_development_dependency('rubocop')

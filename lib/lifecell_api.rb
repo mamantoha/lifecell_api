@@ -138,7 +138,7 @@ module Lifecell
 
     def create_signed_url(method, params)
       query = create_param(params)
-      str = method + '?' + query + '&signature='
+      str = "#{method}?#{query}&signature="
 
       digest = OpenSSL::Digest.new('sha1')
       hash = OpenSSL::HMAC.digest(digest, @application_key, str)
