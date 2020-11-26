@@ -27,6 +27,7 @@ require 'lifecell_api/version'
 #
 module Lifecell
   class MethodError < ArgumentError; end
+
   class StatusError < ArgumentError; end
 
   RESPONSE_CODES = {
