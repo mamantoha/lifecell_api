@@ -4,6 +4,7 @@ require 'bundler'
 Bundler.setup :default
 
 require 'logger'
+require 'date'
 require 'lifecell_api'
 
 puts Lifecell::API::VERSION
@@ -23,7 +24,7 @@ puts "Tariff: #{tariff}"
 line_suspend_date = summary_data['subscriber']['attribute']
                     .select { |f| f['name'] == 'LINE_SUSPEND_DATE' }
                     .first['content']
-line_suspend_date = Time.mktime(line_suspend_date).strftime('%d.%m.%Y')
+line_suspend_date = DateTime.parse(line_suspend_date).to_time.strftime('%d.%m.%Y')
 puts "Suspend date: #{line_suspend_date}"
 
 puts
