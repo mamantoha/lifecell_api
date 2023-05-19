@@ -19,11 +19,9 @@ Gem::Specification.new do |gem|
 
   gem.files = `git ls-files`.split($INPUT_RECORD_SEPARATOR)
   gem.executables = gem.files.grep(%r{^bin/}).map { |f| File.basename(f) }
-  gem.test_files = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ['lib']
 
   gem.required_ruby_version = '>= 2.6.0'
   gem.add_runtime_dependency('xml-simple', '~> 1.1.2')
-  gem.add_development_dependency('pry')
-  gem.add_development_dependency('rubocop')
+  gem.metadata['rubygems_mfa_required'] = 'true'
 end
