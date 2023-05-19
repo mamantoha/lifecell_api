@@ -67,6 +67,7 @@ Now you can make requests to the API.
 Below you can see some the methods for working with life:) data.
 
 #### Returns advanced information on the current subscriber
+
 ```
 life.summary_data
 ```
@@ -189,12 +190,6 @@ Sample response
       "type"=>"Payment via WEB",
       "sum"=>"40.00"}]}}
 ```
-
-## Supported Rubies
-
-Tested with the following Ruby versions:
-
-* MRI 2.5.0
 
 ## Contributing
 
