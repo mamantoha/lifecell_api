@@ -70,13 +70,13 @@ Below you can see some the methods for working with life:) data.
 
 #### Returns advanced information on the current subscriber
 
-```
+```ruby
 life.summary_data
 ```
 
 Sample response
 
-```
+```ruby
 {"method"=>"getSummaryData",
  "responseCode"=>"0",
  "subscriber"=>
@@ -104,13 +104,13 @@ Sample response
 
 #### Returns the balance of the current subscriber
 
-```
+```ruby
 life.balances
 ```
 
 Sample response
 
-```
+```ruby
 {"method"=>"getBalances",
  "responseCode"=>"0",
  "balance"=>
@@ -171,13 +171,13 @@ Sample response
 
 #### Returns payments history for calendar month in format 'YYYY-mm'
 
-```
+```ruby
 life.payments_history('2013-03')
 ```
 
 Sample response
 
-```
+```ruby
 {"method"=>"getPaymentsHistory",
  "responseCode"=>"0",
  "payments"=>
