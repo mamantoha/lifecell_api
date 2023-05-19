@@ -1,5 +1,7 @@
 # lifecell::API
 
+[![Gem Version](https://badge.fury.io/rb/lifecell_api.svg)](https://badge.fury.io/rb/lifecell_api)
+
 A Ruby library for interfacing with lifecell's undocumented/unannounced API.
 
 Formerly known as `life-api`.
