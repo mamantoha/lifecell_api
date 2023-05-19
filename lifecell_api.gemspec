@@ -12,7 +12,7 @@ Gem::Specification.new do |gem|
   gem.description = 'A Ruby interface to the lifecell API'
   gem.summary = <<-SUMMARY
     The Lifecell::API library is used for interactions
-    with api.life.com.ua
+    with api.lifecell.com.ua
   SUMMARY
   gem.homepage = 'https://github.com/mamantoha/lifecell_api'
   gem.license = 'MIT'
