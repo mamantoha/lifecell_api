@@ -38,9 +38,9 @@ require 'lifecell_api'
 
 ### Authentication
 
-You can authenticate with life:) in two ways: with password or with token.
+You can authenticate with lifecell in two ways: with password or with token.
 
-Authentication with password to the life:) API is accomplished using a phone number(`msisdn`) starting with the country code("380"), and SuperPassword(`password`).
+Authentication with password to the lifecell API is accomplished using a phone number(`msisdn`) starting with the country code("380"), and SuperPassword(`password`).
 
 ```ruby
 msisdn = '38063xxxxxxx'
@@ -66,7 +66,7 @@ Now you can make requests to the API.
 
 ### API Examples
 
-Below you can see some the methods for working with life:) data.
+Below you can see some the methods for working with lifecell data.
 
 #### Returns advanced information on the current subscriber
 
