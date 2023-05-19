@@ -11,7 +11,7 @@ require 'xmlsimple'
 require 'lifecell_api/methods'
 require 'lifecell_api/version'
 
-# The Lifecell::API library is used for interactions with a https://api.life.com.ua.
+# The Lifecell::API library is used for interactions with a https://api.lifecell.com.ua.
 # lifecell - GSM operator in Ukraine
 #
 # == Example
@@ -85,7 +85,7 @@ module Lifecell
 
       @os_type = 'ANDROID'
 
-      @api_url         = 'https://api.life.com.ua/mobile/'
+      @api_url         = 'https://api.lifecell.com.ua/mobile/'
       @access_key_code = '7'
       @application_key = 'E6j_$4UnR_)0b'
     end

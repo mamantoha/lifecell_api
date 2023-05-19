@@ -12,18 +12,16 @@ Gem::Specification.new do |gem|
   gem.description = 'A Ruby interface to the lifecell API'
   gem.summary = <<-SUMMARY
     The Lifecell::API library is used for interactions
-    with api.life.com.ua
+    with api.lifecell.com.ua
   SUMMARY
   gem.homepage = 'https://github.com/mamantoha/lifecell_api'
   gem.license = 'MIT'
 
   gem.files = `git ls-files`.split($INPUT_RECORD_SEPARATOR)
   gem.executables = gem.files.grep(%r{^bin/}).map { |f| File.basename(f) }
-  gem.test_files = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ['lib']
 
-  gem.required_ruby_version = '>= 2.6.0'
+  gem.required_ruby_version = '>= 2.7.0'
   gem.add_runtime_dependency('xml-simple', '~> 1.1.2')
-  gem.add_development_dependency('pry')
-  gem.add_development_dependency('rubocop')
+  gem.metadata['rubygems_mfa_required'] = 'true'
 end
