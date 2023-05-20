@@ -1,6 +1,7 @@
 # lifecell::API
 
 [![Gem Version](https://badge.fury.io/rb/lifecell_api.svg)](https://badge.fury.io/rb/lifecell_api)
+[![Ruby](https://github.com/mamantoha/lifecell_api/actions/workflows/ruby.yml/badge.svg)](https://github.com/mamantoha/lifecell_api/actions/workflows/ruby.yml)
 [![Rubocop](https://github.com/mamantoha/lifecell_api/actions/workflows/rubocop.yml/badge.svg)](https://github.com/mamantoha/lifecell_api/actions/workflows/rubocop.yml)
 
 A Ruby library for interfacing with lifecell's undocumented/unannounced API.
