@@ -9,3 +9,7 @@ group :development do
   gem 'pry'
   gem 'rubocop', require: false
 end
+
+group :development, :test do
+  gem 'rspec'
+end
