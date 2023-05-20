@@ -76,10 +76,10 @@ module Lifecell
     # * +:password+ - super password
     # * +:lang+ - 'uk', 'ru' or 'en'
     #
-    def initialize(params = {})
-      @msisdn   = params.delete(:msisdn)
-      @password = params.delete(:password)
-      @lang     = params.delete(:lang) || 'uk'
+    def initialize(msisdn:, password:, lang: 'uk')
+      @msisdn   = msisdn
+      @password = password
+      @lang     = lang
 
       @log = nil
 
