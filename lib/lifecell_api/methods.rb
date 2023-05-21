@@ -67,9 +67,9 @@ module Lifecell
     def ui_properties(language_id, last_date_update)
       request(
         'getUIProperties',
-        accessKeyCode: @access_key_code,
+        accessKeyCode: ACCESS_KEY_CODE,
         languageId: language_id,
-        osType: @os_type,
+        osType: OS_TYPE,
         lastDateUpdate: last_date_update
       )
     end

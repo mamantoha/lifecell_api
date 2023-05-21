@@ -60,6 +60,11 @@ module Lifecell
   class API
     attr_accessor :token, :sub_id
 
+    BASE_URL = 'https://api.lifecell.com.ua/mobile/'
+    ACCESS_KEY_CODE = '7'
+    APPLICATION_KEY = 'E6j_$4UnR_)0b'
+    OS_TYPE = 'ANDROID'
+
     class << self
       # Default logger for all Lifecell::API instances
       #
@@ -82,12 +87,6 @@ module Lifecell
       @lang     = lang
 
       @log = nil
-
-      @os_type = 'ANDROID'
-
-      @api_url         = 'https://api.lifecell.com.ua/mobile/'
-      @access_key_code = '7'
-      @application_key = 'E6j_$4UnR_)0b'
     end
 
     # The current logger. If no logger has been set Lifecell::API.log is used.
@@ -101,7 +100,7 @@ module Lifecell
     attr_writer :log
 
     def request(method, params = {})
-      params = { accessKeyCode: @access_key_code }.merge(params)
+      params = { accessKeyCode: ACCESS_KEY_CODE }.merge(params)
       url = create_signed_url(method, params)
 
       log&.debug("[#{method}] request: #{url}")
@@ -142,13 +141,13 @@ module Lifecell
       str = "#{method}?#{query}&signature="
 
       digest = OpenSSL::Digest.new('sha1')
-      hash = OpenSSL::HMAC.digest(digest, @application_key, str)
+      hash = OpenSSL::HMAC.digest(digest, APPLICATION_KEY, str)
 
       hash = Base64.encode64(hash).chomp
 
       str += urlencode(hash)
 
-      @api_url + str
+      BASE_URL + str
     end
 
     # Returns a string representation of the receiver suitable for use
@@ -169,7 +168,7 @@ module Lifecell
     end
 
     def base_api_parameters
-      { msisdn: @msisdn, languageId: @lang, osType: @os_type, token: @token }
+      { msisdn: @msisdn, languageId: @lang, osType: OS_TYPE, token: @token }
     end
   end
 end
