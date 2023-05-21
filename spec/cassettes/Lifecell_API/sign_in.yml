@@ -1,0 +1,38 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.lifecell.com.ua/mobile/signIn?accessKeyCode=7&msisdn=380630000000&signature=pZqbYXP/F5cxZhNX2lXA/rlzynI=&superPassword=passw0rd
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Sat, 20 May 2023 13:09:07 GMT
+      Content-Type:
+      - application/xml;charset=UTF-8
+      Content-Length:
+      - '242'
+      Connection:
+      - keep-alive
+      X-Frame-Options:
+      - SAMEORIGIN
+    body:
+      encoding: UTF-8
+      string: <?xml version="1.0" encoding="UTF-8" standalone="yes"?><response method="signIn"><responseCode>0</responseCode><resultText>Successful
+        logic performing or data returning</resultText><token>T0KEN</token><subId>SUB_ID</subId></response>
+  recorded_at: Sat, 20 May 2023 13:09:07 GMT
+recorded_with: VCR 6.1.0
