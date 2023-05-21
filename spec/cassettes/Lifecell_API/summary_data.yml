@@ -1,0 +1,97 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.lifecell.com.ua/mobile/signIn?accessKeyCode=7&msisdn=380630000000&signature=pZqbYXP/F5cxZhNX2lXA/rlzynI=&superPassword=passw0rd
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Sat, 20 May 2023 13:48:38 GMT
+      Content-Type:
+      - application/xml;charset=UTF-8
+      Content-Length:
+      - '242'
+      Connection:
+      - keep-alive
+      X-Frame-Options:
+      - SAMEORIGIN
+    body:
+      encoding: UTF-8
+      string: <?xml version="1.0" encoding="UTF-8" standalone="yes"?><response method="signIn"><responseCode>0</responseCode><resultText>Successful
+        logic performing or data returning</resultText><token>T0KEN</token><subId>SUB_ID</subId></response>
+  recorded_at: Sat, 20 May 2023 13:48:38 GMT
+- request:
+    method: get
+    uri: https://api.lifecell.com.ua/mobile/getSummaryData?accessKeyCode=7&languageId=uk&msisdn=380630000000&osType=ANDROID&signature=zeFGal/zqqJzY9%2BST2/RVzdhiwQ=&token=T0KEN
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Sat, 20 May 2023 13:48:40 GMT
+      Content-Type:
+      - application/xml;charset=UTF-8
+      Content-Length:
+      - '2872'
+      Connection:
+      - keep-alive
+      X-Frame-Options:
+      - SAMEORIGIN
+    body:
+      encoding: UTF-8
+      string: <?xml version="1.0" encoding="UTF-8" standalone="yes"?><response method="getSummaryData"><responseCode>0</responseCode><resultText>Successful
+        logic performing or data returning</resultText><subscriber msisdn="380630000000"><attribute
+        name="ICCID">89380062300016907xxx</attribute><attribute name="PUK">25159xxx</attribute><attribute
+        name="PUK2">00036xxx</attribute><attribute name="PIN2">9300</attribute><attribute
+        name="IMSI">25506109310xxxx</attribute><attribute name="PIN">70xx</attribute><attribute
+        name="SIM_TYPE">ESIM</attribute><attribute name="LINE_STATE">ACT/STD</attribute><attribute
+        name="USE_COMMON_MAIN">false</attribute><attribute name="IS_FISHKA">N</attribute><attribute
+        name="NEXT_FEE_CHARGING_DATE">28.05.23</attribute><attribute name="LANGUAGE_ID">ug</attribute><attribute
+        name="LINE_ACTIVATION_DATE">2010-03-02T11:28:07.000+02:00</attribute><attribute
+        name="LINE_SUSPEND_DATE">2024-04-29T00:00:00.000+03:00</attribute><attribute
+        name="DEVICE_LTE_SUPPORT">YES</attribute><balance code="Line_Main" amount="206.95"/><balance
+        code="Line_Bonus" amount="0.00"/><balance code="Line_Debt" amount="0.00"/><tariff><code>IND_PRE_INET_HEAT</code><name>Internet
+        Heat</name><description>&lt;ul&gt;&lt;li&gt;20GB of Internet&lt;/li&gt;&lt;li&gt;500
+        min to all numbers within Ukraine (landline and mobile, including lifecell)&lt;/li&gt;&lt;li&gt;Unlim
+        to Facebook, Instagram, Twitter&lt;/li&gt;&lt;li&gt;50GB in lifebox storage&lt;/li&gt;&lt;li&gt;+1GB
+        for every 30 min of outgoing calls from BiP Out&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;b&gt;Service
+        package cost for 4 weeks - 200 UAH&lt;/b&gt;&lt;b&gt;&lt;br&gt;&lt;/b&gt;&lt;b&gt;&lt;br&gt;&lt;/b&gt;Tariffs
+        are quoted with all taxes.&lt;br&gt;</description><picture_url>https://m.lifecell.ua/uploads/medialibrary/2021/01/4SITE_internetHeat_EN.png</picture_url><webview_url>https://m.lifecell.ua/en/mobile/tariffs/internet-heat/</webview_url><short_description>&lt;html&gt;&lt;body&gt;&lt;p&gt;Hot
+        tariff for the internet&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</short_description><tariff_price_discount>200</tariff_price_discount><tariff_price_full>200</tariff_price_full><tariff_order_period>4
+        weeks</tariff_order_period></tariff><use_common_main>false</use_common_main></subscriber><applicationAttributes><attribute
+        name="REORDER_A">Yes</attribute><attribute name="REORDER_B">Yes</attribute><attribute
+        name="GIFT_B">Yes</attribute><attribute name="IS_HANDMADE_AVAILABLE">Yes</attribute><attribute
+        name="IS_SHAKE_AND_WIN_AVAILABLE">Yes</attribute><attribute name="SIMAGOTCHI">Yes</attribute><attribute
+        name="IS_GIFTS_POOL_AVAILABLE">Yes</attribute><attribute name="POSSIBILITY_DIYA_IDENTIFICATION">No</attribute><attribute
+        name="POSSIBILITY_DIYA_REGISTRATION">No</attribute><attribute name="IS_SMILE_BONUS_AVAILABLE">No</attribute><attribute
+        name="IS_BAYRAKTAR_AVAILABLE">No</attribute></applicationAttributes></response>
+  recorded_at: Sat, 20 May 2023 13:48:40 GMT
+recorded_with: VCR 6.1.0
