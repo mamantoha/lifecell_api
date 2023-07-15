@@ -38,7 +38,7 @@ puts "Bonus: #{bonus} ₴"
 puts "Dept: #{debt} ₴"
 
 puts "\nBalances:"
-balances =  life.balances
+balances = life.balances
 balances['balance'].keep_if { |i| i['amount'].to_i != 0 }.each do |i|
   puts " * #{i['name']}: #{i['amount']} #{i['measure']}"
 end
