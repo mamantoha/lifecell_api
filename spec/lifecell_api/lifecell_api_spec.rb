@@ -15,14 +15,14 @@ RSpec.describe Lifecell::API do
   end
 
   it 'sign_in', :vcr do
-    lifecell_api = Lifecell::API.new(msisdn: msisdn, password: password, lang: 'uk')
+    lifecell_api = Lifecell::API.new(msisdn:, password:, lang: 'uk')
     lifecell_api.sign_in
 
     expect(lifecell_api.token).to eq(token)
   end
 
   it 'summary_data', :vcr do
-    lifecell_api = Lifecell::API.new(msisdn: msisdn, password: password, lang: 'uk')
+    lifecell_api = Lifecell::API.new(msisdn:, password:, lang: 'uk')
     lifecell_api.sign_in
 
     expect(lifecell_api.token).to eq(token)

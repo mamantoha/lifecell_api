@@ -21,7 +21,7 @@ Gem::Specification.new do |gem|
   gem.executables = gem.files.grep(%r{^bin/}).map { |f| File.basename(f) }
   gem.require_paths = ['lib']
 
-  gem.required_ruby_version = '>= 2.7.0'
+  gem.required_ruby_version = '>= 3.2'
   gem.add_runtime_dependency('xml-simple', '~> 1.1.2')
   gem.metadata['rubygems_mfa_required'] = 'true'
 end

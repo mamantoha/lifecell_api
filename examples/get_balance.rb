@@ -12,7 +12,7 @@ puts Lifecell::API::VERSION
 msisdn = '38xxxxxxxxx'
 password = 'xxxxxx'
 
-life = Lifecell::API.new(msisdn: msisdn, password: password, lang: 'en')
+life = Lifecell::API.new(msisdn:, password:, lang: 'en')
 life.log = Logger.new($stderr)
 life.sign_in
 
