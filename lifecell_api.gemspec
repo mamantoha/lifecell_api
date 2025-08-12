@@ -22,6 +22,6 @@ Gem::Specification.new do |gem|
   gem.require_paths = ['lib']
 
   gem.required_ruby_version = '>= 3.2'
-  gem.add_runtime_dependency('xml-simple', '~> 1.1.2')
+  gem.add_dependency('xml-simple', '~> 1.1.2')
   gem.metadata['rubygems_mfa_required'] = 'true'
 end
