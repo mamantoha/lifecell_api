@@ -9,20 +9,20 @@ RSpec.describe Lifecell::API do
   let(:token) { 'T0KEN' }
 
   it 'initialize' do
-    lifecell_api = Lifecell::API.new(msisdn: '380xxxxxxxxx', password: 'xxxxxx', lang: 'uk')
-    expect(lifecell_api).to be_a(Lifecell::API)
+    lifecell_api = described_class.new(msisdn: '380xxxxxxxxx', password: 'xxxxxx', lang: 'uk')
+    expect(lifecell_api).to be_a(described_class)
     expect(lifecell_api.token).to be_nil
   end
 
   it 'sign_in', :vcr do
-    lifecell_api = Lifecell::API.new(msisdn:, password:, lang: 'uk')
+    lifecell_api = described_class.new(msisdn:, password:, lang: 'uk')
     lifecell_api.sign_in
 
     expect(lifecell_api.token).to eq(token)
   end
 
   it 'summary_data', :vcr do
-    lifecell_api = Lifecell::API.new(msisdn:, password:, lang: 'uk')
+    lifecell_api = described_class.new(msisdn:, password:, lang: 'uk')
     lifecell_api.sign_in
 
     expect(lifecell_api.token).to eq(token)
