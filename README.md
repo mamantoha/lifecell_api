@@ -205,6 +205,6 @@ Sample response
 
 ## License and Author
 
-Copyright (c) 2013-2023 by Anton Maminov
+Copyright (c) 2013-2026 by Anton Maminov
 
 This library is distributed under the MIT license. Please see the LICENSE file.
