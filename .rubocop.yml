@@ -3,3 +3,9 @@ plugins: rubocop-rspec
 AllCops:
   TargetRubyVersion: 3.3
   NewCops: enable
+
+RSpec/SpecFilePathFormat:
+  Enabled: false
+
+RSpec/MultipleExpectations:
+  Enabled: false
